@@ -1,66 +1,51 @@
-import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Mail, Send } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin } from "lucide-react";
 
-const ContactSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+const contacts = [
+  { icon: Mail, label: "Email", value: "anthony@example.com", href: "mailto:anthony@example.com" },
+  { icon: Phone, label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567" },
+  { icon: MapPin, label: "Location", value: "Lagos, Nigeria", href: "#" },
+];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setVisible(true),
-      { threshold: 0.2 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+const spring = { type: "spring" as const, stiffness: 120, damping: 18 };
 
-  return (
-    <section id="contact" className="relative">
-      <div ref={ref} className={`section-container transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+const ContactSection = () => (
+  <section id="contact" className="relative">
+    <div className="section-container">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={spring}
+      >
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-4">
-          Get In <span className="text-primary neon-text">Touch</span>
+          Get In <span className="text-primary glow-text">Touch</span>
         </h2>
-        <div className="w-16 h-1 bg-primary mx-auto mb-12 rounded-full neon-glow" />
+        <div className="w-16 h-1 bg-primary mx-auto mb-12 rounded-full glow" />
 
-        <div className="glass-card p-8 md:p-12 max-w-2xl mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <Mail className="w-5 h-5 text-primary" />
-            <a href="mailto:anthony@example.com" className="font-body text-primary hover:underline">
-              anthony@example.com
-            </a>
-          </div>
-
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
-            <div>
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground font-body placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:neon-glow transition-all duration-300"
-              />
-            </div>
-            <div>
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground font-body placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:neon-glow transition-all duration-300"
-              />
-            </div>
-            <div>
-              <textarea
-                rows={4}
-                placeholder="Your Message"
-                className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground font-body placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:neon-glow transition-all duration-300 resize-none"
-              />
-            </div>
-            <Button variant="neon" size="lg" className="w-full">
-              Send Message <Send className="w-4 h-4 ml-2" />
-            </Button>
-          </form>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {contacts.map(({ icon: Icon, label, value, href }, i) => (
+            <motion.a
+              key={label}
+              href={href}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ ...spring, delay: i * 0.1 }}
+              whileHover={{ y: -4 }}
+              className="glass p-8 flex flex-col items-center text-center group hover:border-primary/40 hover:shadow-[0_0_30px_hsl(217_91%_60%/0.2)] transition-all duration-300 cursor-pointer"
+            >
+              <div className="p-4 rounded-2xl bg-primary/10 text-primary mb-4 group-hover:bg-primary/20 transition-colors">
+                <Icon className="w-7 h-7" />
+              </div>
+              <h3 className="font-display text-sm font-bold text-foreground mb-1">{label}</h3>
+              <p className="font-body text-sm text-muted-foreground">{value}</p>
+            </motion.a>
+          ))}
         </div>
-      </div>
-    </section>
-  );
-};
+      </motion.div>
+    </div>
+  </section>
+);
 
 export default ContactSection;
