@@ -5,6 +5,7 @@ import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import AiAssistant from "@/components/AiAssistant";
 
 const Index = () => (
   <div className="min-h-screen bg-background">
@@ -15,6 +16,7 @@ const Index = () => (
     <ProjectsSection />
     <ContactSection />
     <Footer />
+    <AiAssistant />
   </div>
 );
 
