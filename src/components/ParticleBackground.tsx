@@ -11,7 +11,7 @@ const ParticleBackground = () => {
   return (
     <Particles
       id="hero-particles"
-      init={particlesInit}
+      particlesLoaded={async () => {}}
       options={{
         fullScreen: false,
         fpsLimit: 60,
@@ -22,9 +22,7 @@ const ParticleBackground = () => {
             value: { min: 0.1, max: 0.5 },
             animation: { enable: true, speed: 0.5, sync: false },
           },
-          size: {
-            value: { min: 1, max: 3 },
-          },
+          size: { value: { min: 1, max: 3 } },
           move: {
             enable: true,
             speed: 0.6,
