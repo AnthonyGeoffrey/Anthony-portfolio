@@ -94,9 +94,9 @@ const HeroSection = () => {
               transition={{ delay: 0.8, duration: 0.6 }}
             >
               {[
-                { icon: Github, href: "#", label: "GitHub" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:anthony@example.com", label: "Email" },
+                { icon: Github, href: "https://github.com/AnthonyGeoffrey", label: "GitHub" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/anthony-geoffrey-4293aa301/", label: "LinkedIn" },
+                { icon: Mail, href: "mailto:anthonygeoffrey87@gmail.com", label: "Email" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
