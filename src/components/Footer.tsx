@@ -1,9 +1,9 @@
-import { Github, Linkedin, Instagram } from "lucide-react";
+import { Github, Linkedin, MessageCircle } from "lucide-react";
 
 const socials = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Github, href: "https://github.com/AnthonyGeoffrey", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/anthony-geoffrey-4293aa301/", label: "LinkedIn" },
+  { icon: MessageCircle, href: "https://wa.link/1s5aco", label: "WhatsApp" },
 ];
 
 const Footer = () => (
