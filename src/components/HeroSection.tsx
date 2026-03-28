@@ -75,9 +75,13 @@ const HeroSection = () => {
               >
                 View Projects
               </button>
-              <button className="px-8 py-3 rounded-xl font-body font-semibold text-sm border border-border/60 text-foreground backdrop-blur-md hover:border-primary/40 hover:text-primary transition-all duration-300">
-                Download Resume
-              </button>
+              <a
+                href="/Anthony_Geoffrey_Resume.pdf"
+                download
+                className="px-8 py-3 rounded-xl font-body font-semibold text-sm border border-border/60 text-foreground backdrop-blur-md hover:border-primary/40 hover:text-primary transition-all duration-300"
+              >
+                Download CV
+              </a>
               <button
                 onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
                 className="p-3 rounded-xl border border-border/60 text-muted-foreground backdrop-blur-md hover:border-primary/40 hover:text-primary transition-all duration-300"
