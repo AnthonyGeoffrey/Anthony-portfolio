@@ -75,9 +75,13 @@ const HeroSection = () => {
               >
                 View Projects
               </button>
-              <button className="px-8 py-3 rounded-xl font-body font-semibold text-sm border border-border/60 text-foreground backdrop-blur-md hover:border-primary/40 hover:text-primary transition-all duration-300">
-                Download Resume
-              </button>
+              <a
+                href="/Anthony_Geoffrey_Resume.pdf"
+                download
+                className="px-8 py-3 rounded-xl font-body font-semibold text-sm border border-border/60 text-foreground backdrop-blur-md hover:border-primary/40 hover:text-primary transition-all duration-300"
+              >
+                Download CV
+              </a>
               <button
                 onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
                 className="p-3 rounded-xl border border-border/60 text-muted-foreground backdrop-blur-md hover:border-primary/40 hover:text-primary transition-all duration-300"
@@ -94,14 +98,16 @@ const HeroSection = () => {
               transition={{ delay: 0.8, duration: 0.6 }}
             >
               {[
-                { icon: Github, href: "#", label: "GitHub" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:anthony@example.com", label: "Email" },
+                { icon: Github, href: "https://github.com/AnthonyGeoffrey", label: "GitHub" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/anthony-geoffrey-4293aa301/", label: "LinkedIn" },
+                { icon: Mail, href: "mailto:anthonygeoffrey87@gmail.com", label: "Email" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-3 rounded-full border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/40 hover:shadow-[0_0_20px_hsl(217_91%_60%/0.3)] transition-all duration-300"
                 >
                   <Icon className="w-5 h-5" />

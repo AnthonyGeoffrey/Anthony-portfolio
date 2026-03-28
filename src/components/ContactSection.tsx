@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const contacts = [
-  { icon: Mail, label: "Email", value: "anthony@example.com", href: "mailto:anthony@example.com" },
-  { icon: Phone, label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567" },
-  { icon: MapPin, label: "Location", value: "Lagos, Nigeria", href: "#" },
+  { icon: Mail, label: "Email", value: "anthonygeoffrey87@gmail.com", href: "mailto:anthonygeoffrey87@gmail.com" },
+  { icon: Phone, label: "Phone", value: "+254 724946613", href: "tel:+254724946613" },
+  { icon: MapPin, label: "Location", value: "Kenya", href: "#" },
 ];
 
 const spring = { type: "spring" as const, stiffness: 120, damping: 18 };
