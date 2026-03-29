@@ -1,28 +1,31 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Globe, BookOpen, Zap, Folder, LayoutGrid, X } from "lucide-react";
+import { ExternalLink, Github, Globe, BookOpen, Zap, Folder, LayoutGrid, X } from "lucide-react";
 
 const projects = [
   {
     title: "Portfolio Website",
-    description: "A futuristic personal portfolio built with React, Tailwind CSS, and TypeScript. Features smooth animations, modern design, and responsive layout.",
-    tags: ["React", "TypeScript", "Tailwind"],
+    description: "A futuristic personal portfolio built with React, Tailwind CSS, and TypeScript.",
+    tags: ["React", "TypeScript", "Tailwind", "Framer Motion"],
     icon: Globe,
-    link: "#",
+    demo: "#",
+    repo: "https://github.com/AnthonyGeoffrey",
   },
   {
     title: "Blog Platform",
-    description: "A minimalist blog platform with markdown support, clean typography, and fast page loads. Built for writers who value simplicity.",
+    description: "A minimalist blog platform with markdown support and clean typography.",
     tags: ["React", "Markdown", "CSS"],
     icon: BookOpen,
-    link: "#",
+    demo: "#",
+    repo: "https://github.com/AnthonyGeoffrey",
   },
   {
     title: "Task Manager",
-    description: "An efficient task management app with drag-and-drop, priority levels, and deadline tracking. Designed for productivity.",
+    description: "An efficient task management app with drag-and-drop and priority levels.",
     tags: ["JavaScript", "UI/UX", "LocalStorage"],
     icon: Zap,
-    link: "#",
+    demo: "#",
+    repo: "https://github.com/AnthonyGeoffrey",
   },
 ];
 
@@ -39,7 +42,7 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
   >
     <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={onClose} />
     <motion.div
-      className="relative glass-strong p-8 max-w-lg w-full z-10"
+      className="relative glass-strong p-8 max-w-lg w-full z-10 rounded-2xl"
       initial={{ scale: 0.9, y: 30 }}
       animate={{ scale: 1, y: 0 }}
       exit={{ scale: 0.9, y: 30 }}
@@ -63,12 +66,22 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
           </span>
         ))}
       </div>
-      <a
-        href={project.link}
-        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl font-body font-semibold text-sm bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition-all duration-300"
-      >
-        View Project <ExternalLink className="w-4 h-4" />
-      </a>
+      <div className="flex gap-3">
+        <a
+          href={project.demo}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl font-body font-semibold text-sm bg-primary text-primary-foreground hover:shadow-[0_0_20px_hsl(217_91%_60%/0.4)] transition-all duration-300"
+        >
+          Live Demo <ExternalLink className="w-4 h-4" />
+        </a>
+        <a
+          href={project.repo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl font-body font-semibold text-sm border border-border/60 text-foreground hover:border-primary/40 hover:text-primary transition-all duration-300"
+        >
+          GitHub <Github className="w-4 h-4" />
+        </a>
+      </div>
     </motion.div>
   </motion.div>
 );
@@ -94,10 +107,10 @@ const ProjectsSection = () => {
 
           {/* View toggle */}
           <div className="flex items-center justify-center gap-2 mb-12">
-            <div className="glass p-1 flex items-center gap-1">
+            <div className="glass p-1 flex items-center gap-1 rounded-2xl">
               <button
                 onClick={() => setView("folder")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-body text-sm font-medium transition-all duration-300 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl font-body text-sm font-medium transition-all duration-300 ${
                   view === "folder" ? "bg-primary/20 text-primary" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -105,7 +118,7 @@ const ProjectsSection = () => {
               </button>
               <button
                 onClick={() => setView("grid")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-body text-sm font-medium transition-all duration-300 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl font-body text-sm font-medium transition-all duration-300 ${
                   view === "grid" ? "bg-primary/20 text-primary" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -130,21 +143,29 @@ const ProjectsSection = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ ...spring, delay: i * 0.1 }}
-                    whileHover={{ y: -6 }}
+                    whileHover={{ y: -6, scale: 1.02 }}
                     onClick={() => setSelectedProject(project)}
-                    className="glass p-6 group hover:border-primary/40 hover:shadow-[0_0_30px_hsl(217_91%_60%/0.2)] transition-all duration-500 flex flex-col cursor-pointer"
+                    className="glass p-6 group hover:border-primary/40 hover:shadow-[0_0_30px_hsl(217_91%_60%/0.2)] transition-all duration-500 flex flex-col cursor-pointer rounded-2xl"
                   >
                     <div className="p-3 rounded-xl bg-primary/10 text-primary w-fit mb-4 group-hover:bg-primary/20 transition-colors">
                       <project.icon className="w-6 h-6" />
                     </div>
                     <h3 className="font-display text-lg font-bold text-foreground mb-2">{project.title}</h3>
                     <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.map((tag) => (
                         <span key={tag} className="px-2 py-1 text-xs font-body rounded-full bg-primary/10 text-primary border border-primary/20">
                           {tag}
                         </span>
                       ))}
+                    </div>
+                    <div className="flex gap-2">
+                      <span className="inline-flex items-center gap-1 text-xs font-body text-primary">
+                        <ExternalLink className="w-3 h-3" /> Demo
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-xs font-body text-muted-foreground">
+                        <Github className="w-3 h-3" /> Repo
+                      </span>
                     </div>
                   </motion.div>
                 ))}
@@ -163,11 +184,9 @@ const ProjectsSection = () => {
                   onMouseEnter={() => setHoveredFolder(true)}
                   onMouseLeave={() => setHoveredFolder(false)}
                 >
-                  {/* Folder shape */}
-                  <div className="absolute bottom-0 w-full h-40 glass border-primary/20 rounded-xl" />
-                  <div className="absolute bottom-[140px] left-0 w-28 h-8 glass border-primary/20 rounded-t-xl" />
+                  <div className="absolute bottom-0 w-full h-40 glass border-primary/20 rounded-2xl" />
+                  <div className="absolute bottom-[140px] left-0 w-28 h-8 glass border-primary/20 rounded-t-2xl" />
 
-                  {/* Stacked cards */}
                   {projects.map((project, i) => {
                     const total = projects.length;
                     const angle = hoveredFolder ? (i - (total - 1) / 2) * 25 : 0;
@@ -178,14 +197,9 @@ const ProjectsSection = () => {
                     return (
                       <motion.div
                         key={project.title}
-                        className="absolute bottom-8 left-1/2 w-56 glass-strong p-4 cursor-pointer"
+                        className="absolute bottom-8 left-1/2 w-56 glass-strong p-4 cursor-pointer rounded-2xl"
                         style={{ originX: 0.5, originY: 1 }}
-                        animate={{
-                          rotate: angle,
-                          x: tx - 112,
-                          y: ty,
-                          scale,
-                        }}
+                        animate={{ rotate: angle, x: tx - 112, y: ty, scale }}
                         transition={spring}
                         whileHover={{ scale: 1.12 }}
                         onClick={() => setSelectedProject(project)}
@@ -205,7 +219,6 @@ const ProjectsSection = () => {
         </motion.div>
       </div>
 
-      {/* Modal */}
       <AnimatePresence>
         {selectedProject && (
           <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
