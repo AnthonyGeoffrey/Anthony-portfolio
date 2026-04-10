@@ -1,31 +1,26 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Globe, BookOpen, Zap, Folder, LayoutGrid, X } from "lucide-react";
+import { ExternalLink, Github, Globe, Shield, Folder, LayoutGrid, X } from "lucide-react";
+import scamshieldPreview from "@/assets/scamshield-preview.jpg";
 
 const projects = [
   {
     title: "Portfolio Website",
-    description: "A futuristic personal portfolio built with React, Tailwind CSS, and TypeScript.",
+    description: "A futuristic personal portfolio built with React, Tailwind CSS, and TypeScript featuring smooth animations, glassmorphism design, and an interactive AI assistant.",
     tags: ["React", "TypeScript", "Tailwind", "Framer Motion"],
     icon: Globe,
-    demo: "#",
-    repo: "https://github.com/AnthonyGeoffrey",
+    demo: "https://anthony-portfolio-mu.vercel.app/",
+    repo: "https://github.com/AnthonyGeoffrey/Anthony-portfolio",
+    image: null,
   },
   {
-    title: "Blog Platform",
-    description: "A minimalist blog platform with markdown support and clean typography.",
-    tags: ["React", "Markdown", "CSS"],
-    icon: BookOpen,
-    demo: "#",
-    repo: "https://github.com/AnthonyGeoffrey",
-  },
-  {
-    title: "Task Manager",
-    description: "An efficient task management app with drag-and-drop and priority levels.",
-    tags: ["JavaScript", "UI/UX", "LocalStorage"],
-    icon: Zap,
-    demo: "#",
-    repo: "https://github.com/AnthonyGeoffrey",
+    title: "ScamShield",
+    description: "A smart, community-powered platform designed to expose scams, share real user experiences, and help people stay safe online and in real life.",
+    tags: ["React", "Tailwind", "Supabase", "Firecrawl API", "Framer Motion"],
+    icon: Shield,
+    demo: "https://scamguard-eight.vercel.app/",
+    repo: "https://github.com/AnthonyGeoffrey/scamguard-mobile",
+    image: scamshieldPreview,
   },
 ];
 
