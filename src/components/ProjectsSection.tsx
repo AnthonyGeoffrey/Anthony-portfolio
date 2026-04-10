@@ -49,6 +49,9 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
       >
         <X className="w-5 h-5" />
       </button>
+      {project.image && (
+        <img src={project.image} alt={project.title} className="w-full rounded-xl mb-4 border border-border/20" loading="lazy" />
+      )}
       <div className="p-3 rounded-xl bg-primary/10 text-primary w-fit mb-4">
         <project.icon className="w-7 h-7" />
       </div>
@@ -130,7 +133,7 @@ const ProjectsSection = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
               >
                 {projects.map((project, i) => (
                   <motion.div
