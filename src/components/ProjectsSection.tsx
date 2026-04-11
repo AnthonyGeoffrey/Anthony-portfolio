@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Globe, Shield, Folder, LayoutGrid, X } from "lucide-react";
 import scamshieldPreview from "@/assets/scamshield-preview.jpg";
+import portfolioPreview from "@/assets/portfolio-preview.jpg";
 
 const projects = [
   {
@@ -11,7 +12,7 @@ const projects = [
     icon: Globe,
     demo: "https://anthony-portfolio-mu.vercel.app/",
     repo: "https://github.com/AnthonyGeoffrey/Anthony-portfolio",
-    image: null,
+    image: portfolioPreview,
   },
   {
     title: "ScamShield",
