@@ -1,15 +1,10 @@
-import { memo, useCallback, useMemo } from "react";
+import { memo, useMemo } from "react";
 import Particles from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import type { Engine, ISourceOptions } from "@tsparticles/engine";
+import type { ISourceOptions } from "@tsparticles/engine";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const ParticleBackgroundComponent = () => {
   const isMobile = useIsMobile();
-
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
 
   const options = useMemo<ISourceOptions>(
     () => ({
@@ -52,7 +47,7 @@ const ParticleBackgroundComponent = () => {
     [isMobile],
   );
 
-  return <Particles id="hero-particles" particlesInit={particlesInit} options={options} className="absolute inset-0 z-0" />;
+  return <Particles id="hero-particles" options={options} className="absolute inset-0 z-0" />;
 };
 
 const ParticleBackground = memo(ParticleBackgroundComponent);
