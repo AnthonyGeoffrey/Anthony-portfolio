@@ -52,7 +52,7 @@ const ParticleBackgroundComponent = () => {
     [isMobile],
   );
 
-  return <Particles id="hero-particles" init={particlesInit} options={options} className="absolute inset-0 z-0" />;
+  return <Particles id="hero-particles" particlesInit={particlesInit} options={options} className="absolute inset-0 z-0" />;
 };
 
 const ParticleBackground = memo(ParticleBackgroundComponent);
